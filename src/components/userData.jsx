@@ -44,9 +44,19 @@ export default function UserData(){
                         <option className="bg-accent" value={"my-orders"}>My Orders</option>
                     </select>
                 </div>:
-                <div className="w-[150px] flex flex-row">
-                    <Link to="/login" className="mx-2 px-4 py-2 bg-white text-accent rounded-full">Login</Link> /
-                    <Link to="/register" className="mx-2 px-4 py-2 bg-white text-accent rounded-full">Register</Link>
+                <div className="flex flex-row items-center gap-2 sm:gap-3">
+                    <Link 
+                        to="/login" 
+                        className="px-4 py-2 sm:px-5 sm:py-2.5 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-lg hover:from-cyan hover:to-accent transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
+                    >
+                        Login
+                    </Link>
+                    <Link 
+                        to="/register" 
+                        className="px-4 py-2 sm:px-5 sm:py-2.5 border-2 border-accent/50 text-accent font-semibold rounded-lg hover:bg-gradient-to-r hover:from-accent hover:to-cyan hover:text-white hover:border-transparent transition-all text-sm sm:text-base"
+                    >
+                        Register
+                    </Link>
                 </div>
             }
         </>

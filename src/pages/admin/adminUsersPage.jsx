@@ -27,17 +27,16 @@ export default function AdminUsersPage() {
 
 	return (
 		<div
-			className="w-full flex justify-center p-10 relative
-      bg-gradient-to-b from-primary to-white text-secondary"
+			className="w-full flex justify-center p-10 relative bg-midnight"
 		>
 			{loaded ? (
 				<table
 					className="w-full max-w-7xl table-auto border-separate border-spacing-0
-        rounded-2xl overflow-hidden shadow-xl bg-white/70 
+        rounded-2xl overflow-hidden shadow-xl bg-graphite border border-accent/20
         "
 				>
 					<thead className="sticky top-0 z-10">
-						<tr className="bg-secondary text-primary/95">
+						<tr className="bg-gradient-to-r from-accent/80 to-cyan/80 text-white">
 							<th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">
 								Image
 							</th>
@@ -60,35 +59,47 @@ export default function AdminUsersPage() {
 						</tr>
 					</thead>
 
-					<tbody className="divide-y divide-secondary/10">
+					<tbody className="divide-y divide-accent/20">
 						{users.map((item, index) => {
 							return (
 								<tr
 									key={index}
-									className="odd:bg-primary/60 even:bg-white hover:bg-primary/90 transition-colors"
+									className="odd:bg-graphite even:bg-charcoal/50 hover:bg-accent/20 transition-colors border-b border-accent/10"
 								>
 									<td className="px-4 py-3 align-middle">
 										<img
 											src={item.image}
-											className="w-[38px] h-[38px] rounded-lg object-cover ring-1 ring-secondary/10 shadow-sm"
+											className="w-[38px] h-[38px] rounded-lg object-cover ring-1 ring-accent/30 shadow-sm"
 										/>
 									</td>
-									<td className="px-4 py-3 text-sm font-medium text-secondary/90 flex flex-row items-center gap-2">
-										{item.email} {item.isEmailVerified ? <GoVerified className="text-blue-400" /> : ""}
+									<td className="px-4 py-3 text-sm font-medium text-text-primary flex flex-row items-center gap-2">
+										{item.email} {item.isEmailVerified ? <GoVerified className="text-cyan" /> : ""}
 									</td>
-									<td className="px-4 py-3 text-sm">{item.firstName}</td>
-									<td className="px-4 py-3 text-sm font-semibold text-secondary">
+									<td className="px-4 py-3 text-sm text-text-primary">{item.firstName}</td>
+									<td className="px-4 py-3 text-sm font-semibold text-text-primary">
 										{item.lastName}
 									</td>
-									<td className="px-4 py-3 text-sm font-semibold text-secondary">
-										{item.role}
+									<td className="px-4 py-3 text-sm font-semibold">
+										<span className={`px-2 py-1 rounded ${
+											item.role === 'admin' ? 'bg-purple/20 text-purple' : 'bg-secondary/20 text-secondary'
+										}`}>
+											{item.role}
+										</span>
 									</td>
 									<td className="px-4 py-3 text-sm">
-                                        {item.isBlocked ? "Blocked" : "Active"}
+                                        <span className={`px-2 py-1 rounded ${
+											item.isBlocked ? 'bg-red-500/20 text-red-400' : 'bg-cyan/20 text-cyan'
+										}`}>
+											{item.isBlocked ? "Blocked" : "Active"}
+										</span>
                                     </td>
 									<td className="px-4 py-3 text-sm">
                                         <button
-                                            className="px-3 py-1 bg-accent text-primary rounded-lg"
+                                            className={`px-3 py-1 rounded-lg transition-colors border ${
+												item.isBlocked 
+													? 'bg-cyan/30 text-cyan border-cyan/50 hover:bg-cyan/40' 
+													: 'bg-red-500/30 text-red-400 border-red-500/50 hover:bg-red-500/40'
+											}`}
                                             onClick={
                                                 async ()=>{
                                                     await axios.put(import.meta.env.VITE_BACKEND_URL + `/users/toggle-block/${item.email}`,{
@@ -122,8 +133,8 @@ export default function AdminUsersPage() {
 				to="/admin/add-product"
 				className="fixed right-[20px] bottom-[20px] w-[56px] h-[56px]
         flex justify-center items-center text-4xl rounded-full
-        bg-accent text-primary shadow-2xl ring-2 ring-accent/30
-        hover:scale-105 hover:shadow-[0_12px_24px_-6px_rgba(0,0,0,0.35)]
+        bg-gradient-to-r from-accent to-cyan text-white shadow-2xl ring-2 ring-accent/30
+        hover:scale-105 hover:shadow-[0_12px_24px_-6px_rgba(59,130,246,0.5)]
         active:scale-95 transition-all"
 			>
 				<BiPlus />

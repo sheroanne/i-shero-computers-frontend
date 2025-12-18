@@ -15,14 +15,26 @@ function App() {
 		<GoogleOAuthProvider clientId="475942806132-vupbd8t35n3fqrh98rjormcdfvrcso5o.apps.googleusercontent.com">
 			<BrowserRouter>
 				<Toaster position="top-right" />
-				<div className="w-full h-screen bg-primary text-secondary ">
-					<Routes path="/">
+				<div 
+					className="w-full min-h-screen text-text-primary relative"
+					style={{
+						backgroundImage: 'url(/background.png)',
+						backgroundSize: 'cover',
+						backgroundPosition: 'center',
+						backgroundRepeat: 'no-repeat',
+						backgroundAttachment: 'fixed'
+					}}
+				>
+					<div className="absolute inset-0 bg-midnight/40 z-0"></div>
+					<div className="relative z-10 w-full min-h-screen">
+						<Routes path="/">
 						<Route path="/*" element={<HomePage />} />
 						<Route path="/login" element={<LoginPage />} />
 						<Route path="/register" element={<RegisterPage />} />
 						<Route path="/admin/*" element={<AdminPage />} />
 						<Route path="/forgot-password" element={<ForgetPasswordPage />} />
-					</Routes>
+						</Routes>
+					</div>
 				</div>
 			</BrowserRouter>
 		</GoogleOAuthProvider>

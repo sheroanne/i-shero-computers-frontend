@@ -77,15 +77,15 @@ export default function AdminReviewsPage() {
 	const productIds = Object.keys(reviewsByProduct);
 
 	return (
-		<div className="w-full p-10">
+		<div className="w-full p-10 bg-midnight">
 			<div className="mb-6">
-				<h1 className="text-3xl font-bold mb-4">Product Reviews</h1>
+				<h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">Product Reviews</h1>
 				<div className="flex items-center gap-4">
-					<label className="text-sm font-medium">Filter by Product:</label>
+					<label className="text-sm font-medium text-text-primary">Filter by Product:</label>
 					<select
 						value={selectedProduct || ""}
 						onChange={(e) => setSelectedProduct(e.target.value || null)}
-						className="px-4 py-2 border border-secondary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+						className="px-4 py-2 border-2 border-graphite rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan bg-charcoal text-text-primary"
 					>
 						<option value="">All Products</option>
 						{products.map((product) => (
@@ -94,14 +94,14 @@ export default function AdminReviewsPage() {
 							</option>
 						))}
 					</select>
-					<span className="text-sm text-secondary/70">
+					<span className="text-sm text-secondary">
 						{filteredReviews.length} review{filteredReviews.length !== 1 ? "s" : ""}
 					</span>
 				</div>
 			</div>
 
 			{productIds.length === 0 ? (
-				<div className="text-center py-10 text-secondary/70">
+				<div className="text-center py-10 text-secondary">
 					No reviews found.
 				</div>
 			) : (
@@ -116,25 +116,25 @@ export default function AdminReviewsPage() {
 						return (
 							<div
 								key={productID}
-								className="border border-secondary/20 rounded-lg p-6 bg-white/70"
+								className="border-2 border-graphite rounded-lg p-6 bg-graphite shadow-lg"
 							>
 								<div className="flex items-center justify-between mb-4">
 									<div>
-										<h2 className="text-2xl font-semibold">
+										<h2 className="text-2xl font-bold text-text-primary">
 											{product ? product.name : productID}
 										</h2>
-										<p className="text-sm text-secondary/70">
+										<p className="text-sm text-secondary">
 											Product ID: {productID}
 										</p>
 									</div>
 									<div className="text-right">
 										<div className="flex items-center gap-2 mb-1">
-											<span className="text-2xl font-bold">{avgRating.toFixed(1)}</span>
+											<span className="text-2xl font-bold bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">{avgRating.toFixed(1)}</span>
 											<div className="flex items-center">
 												<FaStar className="text-yellow-400" size={20} />
 											</div>
 										</div>
-										<p className="text-sm text-secondary/70">
+										<p className="text-sm text-secondary">
 											{productReviews.length} review
 											{productReviews.length !== 1 ? "s" : ""}
 										</p>
@@ -145,19 +145,19 @@ export default function AdminReviewsPage() {
 									{productReviews.map((review, index) => (
 										<div
 											key={index}
-											className="border-l-4 border-accent pl-4 py-2 bg-primary/20 rounded-r-lg"
+											className="border-l-4 border-accent pl-4 py-2 bg-charcoal rounded-r-lg"
 										>
 											<div className="flex items-center justify-between mb-2">
 												<div className="flex items-center gap-2">
-													<div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent font-semibold text-sm">
+													<div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-cyan flex items-center justify-center text-white font-semibold text-sm shadow-md">
 														{review.firstName.charAt(0).toUpperCase()}
 														{review.lastName.charAt(0).toUpperCase()}
 													</div>
 													<div>
-														<p className="font-semibold">
+														<p className="font-semibold text-text-primary">
 															{review.firstName} {review.lastName}
 														</p>
-														<p className="text-xs text-secondary/70">
+														<p className="text-xs text-secondary">
 															{review.email} •{" "}
 															{new Date(review.date).toLocaleDateString()}
 														</p>
@@ -170,14 +170,14 @@ export default function AdminReviewsPage() {
 															className={
 																star <= review.rating
 																	? "text-yellow-400"
-																	: "text-secondary/30"
+																	: "text-muted"
 															}
 															size={16}
 														/>
 													))}
 												</div>
 											</div>
-											<p className="text-secondary/90 mt-2">{review.comment}</p>
+											<p className="text-secondary mt-2">{review.comment}</p>
 										</div>
 									))}
 								</div>

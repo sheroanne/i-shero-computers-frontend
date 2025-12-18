@@ -20,16 +20,16 @@ export default function ProductPage() {
 	}, []);
 
 	return (
-		<div className="w-full h-[calc(100vh-100px)]">
+		<div className="w-full min-h-[calc(100vh-100px)] bg-transparent">
 			{!loaded ? (
 				<Loader />
 			) : (
-				<div className="w-full flex justify-center p-4 flex-row flex-wrap  ">
-					<div className="w-full h-[100px] sticky top-0 bg-white flex justify-center items-center mb-4 shadow-md z-10">
+				<div className="w-full flex justify-center p-2 sm:p-4 flex-row flex-wrap  ">
+					<div className="w-full h-auto sm:h-[100px] sticky top-0 bg-charcoal flex justify-center items-center mb-4 shadow-lg z-10 border-b border-graphite p-4 sm:p-0">
 						<input
 							type="text"
 							placeholder="Search products..."
-							className="w-1/2 px-4 py-2 border border-secondary/30 rounded-lg outline-none"							
+							className="w-full sm:w-3/4 md:w-1/2 px-4 py-3 border-2 border-graphite rounded-lg outline-none focus:ring-2 focus:ring-cyan focus:border-cyan bg-midnight text-text-primary placeholder-secondary transition-all"							
 							onChange={async (e) => {
 
 								if (e.target.value == "") {

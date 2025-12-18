@@ -1,10 +1,27 @@
 @import "tailwindcss";
 @theme {
-  --color-primary: #f8f5fc;
-  --color-secondary:#125170;
-  --color-accent: #125170;
-  --color-accent: #111827;
-  --color-blue: #2980ba;
+  /* Base Backgrounds - Modern Dark Palette */
+  --color-midnight: #0F172A; /* Main background */
+  --color-charcoal: #111827; /* Nav / Footer */
+  --color-graphite: #1E293B; /* Cards, sections */
+  
+  /* Primary Accent Colors */
+  --color-accent: #3B82F6; /* Cool Blue - buttons, links, icons */
+  --color-cyan: #38BDF8; /* Soft Cyan - hover states, gradients */
+  
+  /* Secondary Accent */
+  --color-purple: #6366F1; /* Muted Purple - badges, featured items */
+  
+  /* Text Colors */
+  --color-text-primary: #E5E7EB; /* Primary text */
+  --color-secondary: #9CA3AF; /* Secondary text */
+  --color-muted: #6B7280; /* Disabled / Muted */
+  
+  /* Legacy support */
+  --color-primary: #0F172A;
+  --color-card: #1E293B;
+  --color-white: #E5E7EB;
+  --color-blue: #3B82F6;
 }
 
 /* Customize the entire scrollbar */
@@ -19,6 +36,6 @@
 
 /* Customize the scrollbar thumb (draggable part) */
 ::-webkit-scrollbar-thumb {
-  background-color: #416fcdfe; /* Tailwind color equivalent: bg-gray-500 */
+  background: linear-gradient(180deg, #3B82F6 0%, #38BDF8 100%); /* Modern gradient */
   border-radius: 4px; /* Add rounded corners */
 }

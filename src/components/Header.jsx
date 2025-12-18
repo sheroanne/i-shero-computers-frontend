@@ -7,65 +7,72 @@ import UserData from "./userData";
 export default function Header() {
 	const [sideBarOpen, setSideBarOpen] = useState(false);
 	return (
-		<header className="w-full h-[100px] bg-accent flex relative">
+		<header className="w-full h-[100px] bg-charcoal flex relative shadow-lg border-b border-graphite">
 			<LuListCollapse
 				onClick={() => {
 					setSideBarOpen(true);
 				}}
-				className="text-white my-auto text-2xl ml-6 lg:hidden"
+				className="text-text-primary my-auto text-2xl ml-6 lg:hidden hover:text-cyan transition-colors"
 			/>
 			<img src="/pc-logo.png" className="h-full" alt="logo" />
-			<div className="w-full h-full hidden lg:flex text-xl text-primary justify-center items-center  gap-[30px]">
-				<Link to="/">Home</Link>
-				<Link to="/products">Products</Link>
-				<Link to="/about">About</Link>
-				<Link to="/contact">Contact</Link>
+			<div className="w-full h-full hidden lg:flex text-xl text-text-primary justify-center items-center  gap-[30px]">
+				<Link to="/" className="hover:text-cyan transition-colors font-medium">Home</Link>
+				<Link to="/products" className="hover:text-cyan transition-colors font-medium">Products</Link>
+				<Link to="/about" className="hover:text-cyan transition-colors font-medium">About</Link>
+				<Link to="/contact" className="hover:text-cyan transition-colors font-medium">Contact</Link>
 			</div>
 			<div className="absolute right-24 top-0 h-full  items-center hidden lg:flex">
 				<UserData />
 			</div>
 			<Link
 				to="/cart"
-				className="absolute right-4 top-1/2 -translate-y-1/2 text-primary text-2xl"
+				className="absolute right-4 top-1/2 -translate-y-1/2 text-text-primary text-2xl hover:text-cyan transition-colors"
 			>
 				<BiShoppingBag />
 			</Link>
 			{sideBarOpen && (
-				<div className="fixed lg:hidden w-[100vw] h-screen top-0 left-0 bg-black/50 z-20 transition-all duration-300">
-					<div className=" w-[250px] h-screen flex-col relative">
-						<div className="absolute w-full h-full bg-white left-[-250px] transform-flat translate-x-[250px] transition-transform duration-1000 flex flex-col">
-							<div className="w-full h-[100px] bg-accent flex justify-center items-center">
-								<img src="/logo.png" className="h-full" alt="logo" />
+				<div className="fixed lg:hidden w-[100vw] h-screen top-0 left-0 bg-black/70 z-50 transition-all duration-300" onClick={() => setSideBarOpen(false)}>
+					<div className="w-[280px] sm:w-[300px] h-screen flex-col relative" onClick={(e) => e.stopPropagation()}>
+						<div className="w-full h-full bg-charcoal flex flex-col border-r border-graphite shadow-2xl">
+							<div className="w-full h-[100px] bg-charcoal flex items-center justify-between px-4 border-b border-graphite">
+								<img src="/pc-logo.png" className="h-full" alt="logo" />
 								<LuListCollapse
 									onClick={() => {
 										setSideBarOpen(false);
 									}}
-									className="text-white my-auto text-2xl ml-6 lg:hidden rotate-180"
+									className="text-text-primary text-2xl hover:text-cyan transition-colors cursor-pointer"
 								/>
 							</div>
-							<div className="w-full h-full flex flex-col text-xl text-secondary justify-start items-start  gap-6 mt-10 pl-6">
-								<a
-									className="hover:text-secondary transition"
-									href="/"
+							<div className="w-full h-full flex flex-col text-xl text-text-primary justify-start items-start gap-6 mt-10 pl-6 overflow-y-auto">
+								<Link
+									to="/"
+									className="hover:text-cyan transition-colors font-medium"
 									onClick={() => setSideBarOpen(false)}
 								>
 									Home
-								</a>
-								<a
-									className="hover:text-secondary transition"
-									href="/products"
+								</Link>
+								<Link
+									to="/products"
+									className="hover:text-cyan transition-colors font-medium"
 									onClick={() => setSideBarOpen(false)}
 								>
 									Products
-								</a>
-								<a
-									className="hover:text-secondary transition"
-									href="/about"
+								</Link>
+								<Link
+									to="/about"
+									className="hover:text-cyan transition-colors font-medium"
 									onClick={() => setSideBarOpen(false)}
 								>
 									About
-								</a>
-								<div className=" flex justify-center bg-accent p-2 rounded-full">
+								</Link>
+								<Link
+									to="/contact"
+									className="hover:text-cyan transition-colors font-medium"
+									onClick={() => setSideBarOpen(false)}
+								>
+									Contact
+								</Link>
+								<div className="w-full flex justify-center bg-gradient-to-r from-accent to-cyan p-2 rounded-full mt-4">
 									<UserData />
 								</div>
 							</div>
