@@ -1,8 +1,9 @@
 @import "tailwindcss";
 @theme {
-  --color-primary: #F9FBFD;
-  --color-secondary: #1E2A38;
-  --color-accent: #2B7BCD;
+  --color-primary: #f8f5fc;
+  --color-secondary:#125170;
+  --color-accent: #125170;
+  --color-accent: #111827;
   --color-blue: #2980ba;
 }
 
@@ -18,6 +19,6 @@
 
 /* Customize the scrollbar thumb (draggable part) */
 ::-webkit-scrollbar-thumb {
-  background-color: #888; /* Tailwind color equivalent: bg-gray-500 */
+  background-color: #416fcdfe; /* Tailwind color equivalent: bg-gray-500 */
   border-radius: 4px; /* Add rounded corners */
 }
