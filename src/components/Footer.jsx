@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { 
+import {
   BiShoppingBag, BiLaptop, BiHeadphone, BiWrench
 } from "react-icons/bi";
-import { 
+import {
   FiPhone, FiMail, FiMapPin, FiFacebook, FiTwitter, FiInstagram
 } from "react-icons/fi";
 import { HiOutlineSparkles } from "react-icons/hi";
@@ -19,26 +19,26 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-text-primary">Shero Digital World</h3>
             </div>
             <p className="text-secondary text-sm leading-relaxed">
-              Your trusted partner for premium PCs, laptops, and accessories. 
+              Your trusted partner for premium PCs, laptops, and accessories.
               Quality products at unbeatable prices.
             </p>
             <div className="flex items-center gap-4">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-lg bg-graphite border border-accent/30 flex items-center justify-center text-text-primary hover:bg-accent/20 hover:text-cyan hover:border-cyan transition-all"
                 aria-label="Facebook"
               >
                 <FiFacebook />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-lg bg-graphite border border-accent/30 flex items-center justify-center text-text-primary hover:bg-accent/20 hover:text-cyan hover:border-cyan transition-all"
                 aria-label="Twitter"
               >
                 <FiTwitter />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-lg bg-graphite border border-accent/30 flex items-center justify-center text-text-primary hover:bg-accent/20 hover:text-cyan hover:border-cyan transition-all"
                 aria-label="Instagram"
               >
@@ -52,8 +52,8 @@ export default function Footer() {
             <h4 className="text-lg font-bold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link 
-                  to="/" 
+                <Link
+                  to="/"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -61,8 +61,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/products" 
+                <Link
+                  to="/products"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -70,8 +70,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/about" 
+                <Link
+                  to="/about"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -79,8 +79,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/contact" 
+                <Link
+                  to="/contact"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -88,13 +88,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/orders" 
-                  className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
-                  My Orders
-                </Link>
               </li>
             </ul>
           </div>
@@ -104,8 +97,8 @@ export default function Footer() {
             <h4 className="text-lg font-bold text-text-primary mb-4">Categories</h4>
             <ul className="space-y-3">
               <li>
-                <Link 
-                  to="/products" 
+                <Link
+                  to="/products"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <BiLaptop className="text-cyan" />
@@ -113,8 +106,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/products" 
+                <Link
+                  to="/products"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <BiHeadphone className="text-cyan" />
@@ -122,8 +115,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/about" 
+                <Link
+                  to="/about"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <BiWrench className="text-cyan" />
@@ -131,8 +124,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/products" 
+                <Link
+                  to="/products"
                   className="text-secondary hover:text-cyan transition-colors flex items-center gap-2"
                 >
                   <BiShoppingBag className="text-cyan" />
