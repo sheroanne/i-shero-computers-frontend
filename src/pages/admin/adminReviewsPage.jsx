@@ -77,15 +77,15 @@ export default function AdminReviewsPage() {
 	const productIds = Object.keys(reviewsByProduct);
 
 	return (
-		<div className="w-full p-10 bg-midnight">
+		<div className="w-full p-4 sm:p-6 md:p-10 bg-midnight">
 			<div className="mb-6">
-				<h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">Product Reviews</h1>
-				<div className="flex items-center gap-4">
+				<h1 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">Product Reviews</h1>
+				<div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
 					<label className="text-sm font-medium text-text-primary">Filter by Product:</label>
 					<select
 						value={selectedProduct || ""}
 						onChange={(e) => setSelectedProduct(e.target.value || null)}
-						className="px-4 py-2 border-2 border-graphite rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan bg-charcoal text-text-primary"
+						className="w-full sm:w-auto flex-1 sm:flex-none px-4 py-2 border-2 border-graphite rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan bg-charcoal text-text-primary"
 					>
 						<option value="">All Products</option>
 						{products.map((product) => (
@@ -116,25 +116,25 @@ export default function AdminReviewsPage() {
 						return (
 							<div
 								key={productID}
-								className="border-2 border-graphite rounded-lg p-6 bg-graphite shadow-lg"
+								className="border-2 border-graphite rounded-lg p-4 sm:p-6 bg-graphite shadow-lg"
 							>
-								<div className="flex items-center justify-between mb-4">
+								<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
 									<div>
-										<h2 className="text-2xl font-bold text-text-primary">
+										<h2 className="text-xl sm:text-2xl font-bold text-text-primary">
 											{product ? product.name : productID}
 										</h2>
-										<p className="text-sm text-secondary">
+										<p className="text-xs sm:text-sm text-secondary">
 											Product ID: {productID}
 										</p>
 									</div>
-									<div className="text-right">
+									<div className="text-left sm:text-right">
 										<div className="flex items-center gap-2 mb-1">
-											<span className="text-2xl font-bold bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">{avgRating.toFixed(1)}</span>
+											<span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">{avgRating.toFixed(1)}</span>
 											<div className="flex items-center">
 												<FaStar className="text-yellow-400" size={20} />
 											</div>
 										</div>
-										<p className="text-sm text-secondary">
+										<p className="text-xs sm:text-sm text-secondary">
 											{productReviews.length} review
 											{productReviews.length !== 1 ? "s" : ""}
 										</p>

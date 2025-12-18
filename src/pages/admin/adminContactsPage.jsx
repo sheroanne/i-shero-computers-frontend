@@ -39,7 +39,7 @@ export default function AdminContactsPage() {
 	};
 
 	return (
-		<div className="w-full flex justify-center p-10 relative bg-midnight">
+		<div className="w-full flex justify-center p-4 sm:p-6 md:p-10 relative bg-midnight">
 			{loaded ? (
 				<div className="w-full max-w-7xl">
 					{contacts.length === 0 ? (

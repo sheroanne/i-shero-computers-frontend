@@ -27,14 +27,79 @@ export default function AdminUsersPage() {
 
 	return (
 		<div
-			className="w-full flex justify-center p-10 relative bg-midnight"
+			className="w-full flex justify-center p-4 sm:p-6 md:p-10 relative bg-midnight"
 		>
 			{loaded ? (
-				<table
-					className="w-full max-w-7xl table-auto border-separate border-spacing-0
-        rounded-2xl overflow-hidden shadow-xl bg-graphite border border-accent/20
-        "
-				>
+				<>
+					{/* Mobile Card Layout */}
+					<div className="w-full max-w-7xl md:hidden space-y-4">
+						{users.map((item, index) => {
+							return (
+								<div
+									key={index}
+									className="bg-graphite border border-accent/20 rounded-xl p-4 shadow-lg"
+								>
+									<div className="flex items-start gap-4 mb-4">
+										<img
+											src={item.image}
+											className="w-16 h-16 rounded-lg object-cover ring-1 ring-accent/30 shadow-sm flex-shrink-0"
+										/>
+										<div className="flex-1 min-w-0">
+											<div className="flex items-center gap-2 mb-1">
+												<h3 className="text-base font-bold text-text-primary break-words">
+													{item.firstName} {item.lastName}
+												</h3>
+												{item.isEmailVerified && <GoVerified className="text-cyan flex-shrink-0" />}
+											</div>
+											<p className="text-sm text-secondary break-all">{item.email}</p>
+										</div>
+									</div>
+									<div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+										<div>
+											<p className="text-secondary mb-1">Role</p>
+											<span className={`px-2 py-1 rounded text-xs font-medium ${
+												item.role === 'admin' ? 'bg-purple/20 text-purple' : 'bg-secondary/20 text-secondary'
+											}`}>
+												{item.role}
+											</span>
+										</div>
+										<div>
+											<p className="text-secondary mb-1">Status</p>
+											<span className={`px-2 py-1 rounded text-xs font-medium ${
+												item.isBlocked ? 'bg-red-500/20 text-red-400' : 'bg-cyan/20 text-cyan'
+											}`}>
+												{item.isBlocked ? "Blocked" : "Active"}
+											</span>
+										</div>
+									</div>
+									<button
+										className={`w-full px-3 py-2 rounded-lg transition-colors border text-sm font-medium ${
+											item.isBlocked 
+												? 'bg-cyan/30 text-cyan border-cyan/50 hover:bg-cyan/40' 
+												: 'bg-red-500/30 text-red-400 border-red-500/50 hover:bg-red-500/40'
+										}`}
+										onClick={async () => {
+											await axios.put(import.meta.env.VITE_BACKEND_URL + `/users/toggle-block/${item.email}`, {
+												isBlocked: !item.isBlocked
+											}, {
+												headers: {  
+													Authorization: `Bearer ${localStorage.getItem("token")}`
+												}
+											});
+											setLoaded(false);
+										}}
+									>
+										{item.isBlocked ? "Unblock User" : "Block User"}
+									</button>
+								</div>
+							);
+						})}
+					</div>
+
+					{/* Desktop Table Layout */}
+					<table
+						className="hidden md:table w-full max-w-7xl table-auto border-separate border-spacing-0 rounded-2xl overflow-hidden shadow-xl bg-graphite border border-accent/20"
+					>
 					<thead className="sticky top-0 z-10">
 						<tr className="bg-gradient-to-r from-accent/80 to-cyan/80 text-white">
 							<th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">
@@ -124,7 +189,8 @@ export default function AdminUsersPage() {
 							);
 						})}
 					</tbody>
-				</table>
+					</table>
+				</>
 			) : (
 				<Loader />
 			)}
