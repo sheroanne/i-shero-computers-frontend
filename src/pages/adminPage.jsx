@@ -1,6 +1,6 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { LuBoxes, LuClipboardList } from "react-icons/lu";
-import { FiUsers } from "react-icons/fi";
+import { FiUsers, FiLogOut } from "react-icons/fi";
 import { MdOutlineRateReview } from "react-icons/md";
 import AdminProductsPage from "./admin/adminProductsPage";
 import AdminAddProductPage from "./admin/adminAddProductPage";
@@ -10,8 +10,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/loader";
 import AdminUsersPage from "./admin/adminUsersPage";
+import AdminReviewsPage from "./admin/adminReviewsPage";
+import toast from "react-hot-toast";
 export default function AdminPage() {
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         const token = localStorage.getItem("token");
@@ -33,6 +36,12 @@ export default function AdminPage() {
             window.location.href = "/login";
         })
     },[])
+
+    function handleLogout() {
+        localStorage.removeItem("token");
+        toast.success("Logged out successfully");
+        navigate("/login");
+    }
 	return (
 		<div className="w-full h-full flex bg-accent">
             {user ?
@@ -73,6 +82,13 @@ export default function AdminPage() {
 							<MdOutlineRateReview />
 							Reviews
 						</Link>
+						<button
+							onClick={handleLogout}
+							className="w-full flex items-center h-[50px] gap-[10px] text-left hover:opacity-80 transition-opacity"
+						>
+							<FiLogOut />
+							Logout
+						</button>
 					</div>
 				</div>
 				<div className="w-[calc(100%-300px)] h-full max-h-full bg-primary border-[10px] border-accent rounded-3xl overflow-y-scroll ">
@@ -85,7 +101,7 @@ export default function AdminPage() {
 							element={<AdminUpdateProductPage />}
 						/>
 						<Route path="/users" element={<AdminUsersPage />} />
-						<Route path="/reviews" element={<h1>Reviews</h1>} />
+						<Route path="/reviews" element={<AdminReviewsPage />} />
 						
 					</Routes>
 				</div>
